@@ -691,7 +691,7 @@ reconRecommend() {
                 echo "smbclient -L \"//${HOST}/\" -U \"guest\"% | tee \"recon/smbclient_${HOST}.txt\""
                 if [ "${osType}" = "Windows" ]; then
                         echo "nmap -Pn -p445 --script vuln -oN \"recon/SMB_vulns_${HOST}.txt\" \"${HOST}\""
-                        echo "netexec smb \"${HOST}\" -u 'Anonymous' -p ''  --rid-brute -oN \"recon/Null_Session_User_enumeration_${HOST}.txt\" "
+                        netexec smb ${HOST} -u 'Anonymous' -p ''  --rid-brute -oN recon/Null_Session_User_enumeration_${HOST}.txt
                 elif [ "${osType}" = "Linux" ]; then
                         echo "enum4linux -a \"${HOST}\" | tee \"recon/enum4linux_${HOST}.txt\""
                 fi
